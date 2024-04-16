@@ -1,0 +1,13 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'F103Template'
+compiling ws2812.c...
+ws2812.c(72): warning:  #1293-D: assignment in condition
+      if ((pixels = (uint8_t *)malloc(RESET_PULSE + numBytes)))
+ws2812.c(141): warning:  #1-D: last line of file ends without a newline
+  }
+ws2812.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=11592 RO-data=312 RW-data=24 ZI-data=2200  
+FromELF: creating hex file...
+"F103Template\F103Template.axf" - 0 Error(s), 2 Warning(s).
+Build Time Elapsed:  00:00:02
