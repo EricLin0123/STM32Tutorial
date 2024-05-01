@@ -42,11 +42,11 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define isblink 0
+#define isblink 1
 #define DMAdemo 0
 #define isDMA 0
-#define isADC 1
-#define isDMA_ADC 1
+#define isADC 0
+#define isDMA_ADC
 #define isPWM 0
 #define isWS2812 0
 #define isIMU 0
