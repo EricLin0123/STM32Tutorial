@@ -23,51 +23,45 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f1xx_hal.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
+    /* Private includes ----------------------------------------------------------*/
+    /* USER CODE BEGIN Includes */
 
-/* USER CODE END Includes */
+    /* USER CODE END Includes */
 
-/* Exported types ------------------------------------------------------------*/
-/* USER CODE BEGIN ET */
+    /* Exported types ------------------------------------------------------------*/
+    /* USER CODE BEGIN ET */
 
-/* USER CODE END ET */
+    /* USER CODE END ET */
 
-/* Exported constants --------------------------------------------------------*/
-/* USER CODE BEGIN EC */
+    /* Exported constants --------------------------------------------------------*/
+    /* USER CODE BEGIN EC */
 
-/* USER CODE END EC */
+    /* USER CODE END EC */
 
-/* Exported macro ------------------------------------------------------------*/
-/* USER CODE BEGIN EM */
-#define isblink 0
-#define DMAdemo 0
-#define isDMA 0
-#define isADC 0
-#define isDMA_ADC 0
-#define isPWM 0
-#define isWS2812 1
-#define isIMU 0
-/* USER CODE END EM */
+    /* Exported macro ------------------------------------------------------------*/
+    /* USER CODE BEGIN EM */
 
-/* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
+    /* USER CODE END EM */
 
-/* USER CODE BEGIN EFP */
+    /* Exported functions prototypes ---------------------------------------------*/
+    void Error_Handler(void);
 
-/* USER CODE END EFP */
+    /* USER CODE BEGIN EFP */
 
-/* Private defines -----------------------------------------------------------*/
+    /* USER CODE END EFP */
 
-/* USER CODE BEGIN Private defines */
+    /* Private defines -----------------------------------------------------------*/
 
-/* USER CODE END Private defines */
+    /* USER CODE BEGIN Private defines */
+
+    /* USER CODE END Private defines */
 
 #ifdef __cplusplus
 }

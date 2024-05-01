@@ -23,6 +23,7 @@
 #include "i2c.h"
 #include "spi.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -41,7 +42,15 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define isblink 0
+#define DMAdemo 0
+#define isDMA 0
+#define isADC 1
+#define isDMA_ADC 1
+#define isPWM 0
+#define isWS2812 0
+#define isIMU 0
+#define isUARTdemo 0
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,7 +66,16 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+
 /* USER CODE BEGIN PFP */
+int _write(int32_t file, uint8_t *ptr, int32_t len)
+{
+  for (int i = 0; i < len; i++)
+  {
+    ITM_SendChar(*ptr++);
+  }
+  return len;
+}
 void increment(uint8_t *a);
 /* USER CODE END PFP */
 
@@ -72,6 +90,7 @@ const uint8_t a = 0x4C;
  */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
   char buffer[20];
 #if (isDMA)
@@ -111,11 +130,15 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   MX_SPI1_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   OLED_Init();
   OLED_Clear();
-
+  printf("Hello from printf!\n");
+  OLED_ShowString(0, 0, "Hello from i2c!", 8);
+  HAL_UART_Transmit(&huart2, (uint8_t *)"Hello from UART!\n", 17, HAL_MAX_DELAY);
 #if (DMAdemo)
+  const uint8_t b = 0x00;
   OLED_ShowString(0, 0, "Hello, World!", 8);
   sprintf(buffer, "%08x", &ADC1->DR);
   OLED_ShowString(0, 1, buffer, 8);
@@ -196,11 +219,19 @@ int main(void)
 
 #if (isWS2812)
     // ws2812_example();
-    ws2812_test_example();
+    ws2812_test();
 #endif
 
 #if (isIMU)
     ADXL345_Test();
+#endif
+
+#if (isUARTdemo)
+    if (HAL_UART_Receive(&huart2, (uint8_t *)buffer, 1, HAL_MAX_DELAY) == HAL_OK)
+    {
+      HAL_UART_Transmit(&huart2, (uint8_t *)buffer, 1, HAL_MAX_DELAY);
+      HAL_UART_Transmit(&huart2, (uint8_t *)"\r\n\r", 1, HAL_MAX_DELAY);
+    }
 #endif
     /* USER CODE END WHILE */
 
